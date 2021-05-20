@@ -108,4 +108,8 @@ public class SwagLabsLogin {
         setCredentials("", "");
     }
 
+    public boolean isSignedIn() {
+        return webDriver.getCurrentUrl().equals("https://www.saucedemo.com/inventory.html");
+    }
+
 }
