@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SwagLabsLogin {
+
+    final String URL = "https://www.saucedemo.com/";
     WebDriver webDriver;
 
     @FindBy(className = "login_logo")
@@ -35,7 +37,12 @@ public class SwagLabsLogin {
 
     public SwagLabsLogin(WebDriver webDriver) {
         this.webDriver = webDriver;
+        webDriver.get(URL);
         PageFactory.initElements(webDriver, this);
+    }
+
+    public void visitSigninPage() {
+        webDriver.get(URL);
     }
 
     public void setUsername(String username) {

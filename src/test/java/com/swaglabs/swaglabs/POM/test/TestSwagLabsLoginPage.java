@@ -16,24 +16,17 @@ public class TestSwagLabsLoginPage {
 
 	WebDriver driver;
 	SwagLabsLogin labsLogin;
-	final String url = "https://www.saucedemo.com/";
 
 	@BeforeTest(alwaysRun = true)
 	public void setup() {
 		Utils.setDriver();
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get(url);
 	}
 
 	@AfterMethod(dependsOnGroups = { "Login Errors" }, onlyForGroups = { "Login Errors" })
 	public void clear() {
 		labsLogin.clearForm();
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void goBack() {
-		driver.get(url);
 	}
 
 	@Test(description = "Fill the form with empty credentials", groups = { "Login Errors" })
