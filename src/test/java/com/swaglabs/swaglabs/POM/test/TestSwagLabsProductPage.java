@@ -34,4 +34,18 @@ public class TestSwagLabsProductPage {
         labsProductPage = new SwagLabsProductPage(driver, false);
         Assert.assertFalse(labsProductPage.elementsAreDisplayed());
     }
+
+    @Test
+    public void test_add_item_to_cart() {
+        labsProductPage = new SwagLabsProductPage(driver);
+        labsProductPage.addToCart();
+        Assert.assertTrue(labsProductPage.isAddedtoCart());
+    }
+
+    @Test
+    public void test_remove_from_cart() {
+        labsProductPage = new SwagLabsProductPage(driver);
+        labsProductPage.removeFromCart();
+        Assert.assertTrue(labsProductPage.isNotOnCart());
+    }
 }
