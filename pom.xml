@@ -5,8 +5,10 @@
 	<artifactId>swaglabs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>swaglabs</name>
-	<description>Demo project for Spring Boot</description>
+
 	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 		<java.version>8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<aspectj.version>1.9.6</aspectj.version>
@@ -41,6 +43,19 @@
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.0.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
@@ -83,6 +98,14 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

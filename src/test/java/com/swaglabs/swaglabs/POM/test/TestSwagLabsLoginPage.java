@@ -3,8 +3,8 @@ package com.swaglabs.swaglabs.POM.test;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
-import com.swaglabs.swaglabs.Utils;
 import com.swaglabs.swaglabs.POM.pages.SwagLabsLogin;
+import com.swaglabs.swaglabs.utils.DriverUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,7 +19,7 @@ public class TestSwagLabsLoginPage {
 
 	@BeforeTest(alwaysRun = true)
 	public void setup() {
-		Utils.setDriver();
+		DriverUtils.setDriver();
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}

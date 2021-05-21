@@ -2,8 +2,8 @@ package com.swaglabs.swaglabs.POM.test;
 
 import java.util.concurrent.TimeUnit;
 
-import com.swaglabs.swaglabs.Utils;
 import com.swaglabs.swaglabs.POM.pages.SwagLabsProductPage;
+import com.swaglabs.swaglabs.utils.DriverUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,7 +18,7 @@ public class TestSwagLabsProductPage {
 
     @BeforeTest(alwaysRun = true)
     public void setup() {
-        Utils.setDriver();
+        DriverUtils.setDriver();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
