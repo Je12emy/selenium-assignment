@@ -8,6 +8,7 @@ import com.swaglabs.swaglabs.utils.DriverUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,11 @@ public class TestSwagLabsProductPage {
         DriverUtils.setDriver();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
     }
 
     @Test

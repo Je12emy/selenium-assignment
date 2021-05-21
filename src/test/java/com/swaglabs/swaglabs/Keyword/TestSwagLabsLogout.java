@@ -13,6 +13,8 @@ import com.swaglabs.swaglabs.utils.UIOperation;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -36,11 +38,16 @@ public class TestSwagLabsLogout {
         operation = new UIOperation(driver);
     }
 
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Test(description = "Signs in and Logs out from application.")
     public void test_logout_from_site() throws Exception {
         properties = objectRepo.getPropertiesRepository();
         Sheet testSheet = readExcel.readExcel(path, "TestWorkBook.xlsx", "Logout");
         readExcel.executeScript(testSheet, operation, properties);
-
+        Assert.assertTrue(true);
     }
 }

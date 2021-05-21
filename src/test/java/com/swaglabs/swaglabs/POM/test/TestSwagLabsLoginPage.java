@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class TestSwagLabsLoginPage {
@@ -22,6 +23,11 @@ public class TestSwagLabsLoginPage {
 		DriverUtils.setDriver();
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
 	}
 
 	@AfterMethod(dependsOnGroups = { "Login Errors" }, onlyForGroups = { "Login Errors" })
