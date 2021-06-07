@@ -1,10 +1,13 @@
 package com.swaglabs.swaglabs.utils;
 
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
-import org.apache.bcel.generic.RETURN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIOperation {
     WebDriver driver;
@@ -36,6 +39,17 @@ public class UIOperation {
             case "MAXIMIZE":
                 // Maximize window size.
                 driver.manage().window().maximize();
+                break;
+            case "IMPLICIT":
+                // Implicitly wait
+                driver.manage().timeouts().implicitlyWait(Integer.parseInt(p.getProperty(value)), TimeUnit.SECONDS);
+                break;
+            case "EXPLICIT":
+                // Explicitly wait until web element is visible
+                WebDriverWait webDriverWait = new WebDriverWait(driver, Integer.parseInt(p.getProperty(value)));
+                webDriverWait.until(
+                        ExpectedConditions.visibilityOfElementLocated(this.getObject(p, objectName, objectType)));
+                break;
             default:
                 break;
         }
