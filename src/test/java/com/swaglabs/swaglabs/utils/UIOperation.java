@@ -1,11 +1,13 @@
 package com.swaglabs.swaglabs.utils;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,6 +20,8 @@ public class UIOperation {
 
     public void perform(Properties p, String operation, String objectName, String objectType, String value)
             throws Exception {
+        
+        List<WebElement> items;
         switch (operation.toUpperCase()) {
             case "CLICK":
                 // Perform click
@@ -49,6 +53,17 @@ public class UIOperation {
                 WebDriverWait webDriverWait = new WebDriverWait(driver, Integer.parseInt(p.getProperty(value)));
                 webDriverWait.until(
                         ExpectedConditions.visibilityOfElementLocated(this.getObject(p, objectName, objectType)));
+                break;
+            case "ASSERT_DISPLAYED":
+                Assert.assertTrue(driver.findElement(this.getObject(p, objectName, objectType)).isDisplayed());
+                break;
+            case "CLICK_BY_INDEX":
+                items = driver.findElements(this.getObject(p, objectName, objectType));
+                items.get(Integer.parseInt(p.getProperty(value))).click();
+                break;
+            case "ASSERT_SIZE":
+                items = driver.findElements(this.getObject(p, objectName, objectType));
+                Assert.assertTrue(items.size()==Integer.parseInt(p.getProperty(value)));
                 break;
             default:
                 break;

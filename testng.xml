@@ -22,4 +22,9 @@
       <class name="com.swaglabs.swaglabs.Keyword.TestSwagLabsLogout" />
     </classes>
   </test>
+  <test name="Add Product to Shopping Cart and Verify">
+    <classes>
+      <class name="com.swaglabs.swaglabs.Keyword.TestSwagLabsInventory" />
+    </classes>
+  </test>
 </suite> <!-- Suite -->
