@@ -27,4 +27,9 @@
       <class name="com.swaglabs.swaglabs.Keyword.TestSwagLabsInventory" />
     </classes>
   </test>
+  <test name="Slider test page">
+    <classes>
+      <class name="com.swaglabs.swaglabs.POM.test.TestSliderPage"/>
+    </classes>
+  </test>
 </suite> <!-- Suite -->
