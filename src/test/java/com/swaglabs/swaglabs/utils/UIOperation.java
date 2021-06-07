@@ -1,11 +1,16 @@
 package com.swaglabs.swaglabs.utils;
 
+import java.io.File;
+import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +25,7 @@ public class UIOperation {
 
     public void perform(Properties p, String operation, String objectName, String objectType, String value)
             throws Exception {
-        
+
         List<WebElement> items;
         switch (operation.toUpperCase()) {
             case "CLICK":
@@ -63,7 +68,14 @@ public class UIOperation {
                 break;
             case "ASSERT_SIZE":
                 items = driver.findElements(this.getObject(p, objectName, objectType));
-                Assert.assertTrue(items.size()==Integer.parseInt(p.getProperty(value)));
+                Assert.assertTrue(items.size() == Integer.parseInt(p.getProperty(value)));
+                break;
+            case "SCREENSHOT":
+                TakesScreenshot screenshot = ((TakesScreenshot) driver);
+                File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+                File destination = new File(
+                        System.getProperty("user.dir") + "/src/main/resources/" + p.getProperty(value));
+                FileUtils.copyFile(screenshotFile, destination);
                 break;
             default:
                 break;
