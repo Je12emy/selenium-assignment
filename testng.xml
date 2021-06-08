@@ -29,7 +29,12 @@
   </test>
   <test name="Slider test page">
     <classes>
-      <class name="com.swaglabs.swaglabs.POM.test.TestSliderPage"/>
+      <class name="com.swaglabs.swaglabs.POM.test.TestSliderPage" />
+    </classes>
+  </test>
+  <test name="Dropdown test page">
+    <classes>
+      <class name="com.swaglabs.swaglabs.POM.test.TestDropdownPage" />
     </classes>
   </test>
 </suite> <!-- Suite -->

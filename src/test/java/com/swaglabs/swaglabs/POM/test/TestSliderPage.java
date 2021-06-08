@@ -21,12 +21,12 @@ public class TestSliderPage {
         driver.quit();
     }
 
-    @Test()
-    public void test_should_update_the_slider_value_drag_and_drop() {
-        SliderPage sliderPage = new SliderPage(driver);
-        sliderPage.setStepsDragDrop(1);
-        sliderPage.assertSize(2.5f);
-    }
+    // @Test()
+    // public void test_should_update_the_slider_value_drag_and_drop() {
+    //     SliderPage sliderPage = new SliderPage(driver);
+    //     sliderPage.setStepsDragDrop(1);
+    //     sliderPage.assertSize(2.5f);
+    // }
 
     @Test()
     public void test_should_update_the_slider_value_keys() {
